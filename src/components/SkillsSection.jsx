@@ -25,7 +25,8 @@ const SkillsSection = () => {
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
-      const renderer = new THREE.WebGLRenderer();
+      const renderer = new THREE.WebGLRenderer({alpha: true});
+      renderer.setClearColor(0x000000, 0);
       renderer.setSize(width, height);
 
       mount.innerHTML = "";
@@ -47,6 +48,9 @@ const SkillsSection = () => {
         controls.enableDamping = true;
 
         function animate() {
+          cube.rotation.x += 0.01;
+          cube.rotation.y += 0.01;
+
           controls.update();
           renderer.render(scene, camera);
           requestAnimationFrame(animate);
@@ -60,14 +64,14 @@ const SkillsSection = () => {
     <div className="w-full min-h-screen bg-gray-900 text-gray-300">
       <div className="max-w-5xl mx-auto px-8">
         <h1 className="text-6xl font-bold mb-10">Skills in 3D</h1>
-        <div className=" flex">
+        <div className=" flex  justify-center items-center">
           {skills.map((skill, i) => (
-            <div key={i} className="w-full  h-72 relative">
+            <div key={i} className="w-full  h-72 relative flex flex-col items-center justify-center">
               <div
                 ref={(el) => (mountRef.current[i] = el)}
                 className="w-full h-full"
               />
-              <p className="absolute bottom-2 left-2 text-white font-semibold">
+              <p className=" relative text-white font-semibold">
                 {skill.name}
               </p>
             </div>
