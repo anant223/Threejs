@@ -10,7 +10,7 @@ const ProductShape = ({product, position}) => {
   return (
     <mesh position={[x, y, z]}>
         <boxGeometry args={[w, h,d]}/>
-        <meshStandardMaterial color={product?.color}/>
+        <meshStandardMaterial  color={product?.color}/>
     </mesh>
   )
 }
