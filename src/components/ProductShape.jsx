@@ -1,4 +1,3 @@
-import { current } from '@reduxjs/toolkit'
 import React from 'react'
 
 const ProductShape = ({product, position}) => {
